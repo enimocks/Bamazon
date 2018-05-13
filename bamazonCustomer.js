@@ -7,11 +7,7 @@ const Table = require('cli-table');
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
-
-  // Your username
   user: "newuser",
-
-  // Your password
   password: "ABCxyz1!",
   database: "Bamazon_DB"
 });
@@ -36,8 +32,8 @@ function displayProducts() {
       table.push(
         [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
       );
-      console.log(table.toString());
     }
+    console.log(table.toString());
     addItems();
   });
 }
@@ -50,7 +46,7 @@ function addItems() {
         type: 'input',
         message: 'What is the Item ID of the product you would like to purchase?',
         validate: function (input) {
-          if (isNaN(input) === false && input !== '')  {
+          if (isNaN(input) === false && input !== '' && input <= 13)  {
             return true;
           } else {
             return false;
@@ -91,7 +87,7 @@ function addItems() {
             updateMySQL(updatedStock, answer.ItemID);
           }
       });
-    }); // end of .then promise
+    });
 }
 
 function updateMySQL(updatedStock, ItemID) {
@@ -105,7 +101,3 @@ function updateMySQL(updatedStock, ItemID) {
     connection.end();
   });
 }
-
-
-// QUESTIONS:
-// Node DeprecationWarning when running program
