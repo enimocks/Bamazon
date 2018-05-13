@@ -77,8 +77,18 @@ function addItems() {
           if (answer.Quantity > res[0].stock_quantity) {
             console.log('Sorry, not enough stock to fill this order. Please check back later.')
           } else {
+            console.log('Great! Your order will be filled.')
+
+            var total = answer.Quantity * res[0].price;
+            var updatedStock = res[0].stock_quantity - answer.Quantity;
             
+            //////////// FOR TESTING
+            console.log(total)
+            console.log(updatedStock)
+
+            updateMySQL();
           }
       });
-    });
+    }); // end of .then promise
 }
+
