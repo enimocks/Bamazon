@@ -17,14 +17,14 @@ var connection = mysql.createConnection({
 });
 
 // connect to the mysql server and sql database
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) throw err;
   // run the displayProducts function after the connection is made to show product details
   displayProducts();
 });
 
 function displayProducts() {
-  connection.query("SELECT * FROM products", function(err, res) {
+  connection.query("SELECT * FROM products", function (err, res) {
 
     var table = new Table({
       head: ['item_id', 'product_name', 'department_name', 'price', 'stock_quantity'],
@@ -49,7 +49,7 @@ function addItems() {
         name: 'ItemID',
         type: 'input',
         message: 'What is the Item ID of the product you would like to purchase?',
-        validate: function(input) {
+        validate: function (input) {
           if (isNaN(input) === false) {
             return true;
           } else {
@@ -61,7 +61,7 @@ function addItems() {
         name: 'Quantity',
         type: 'input',
         message: 'How many would you like to purchase?',
-        validate: function(input) {
+        validate: function (input) {
           if (isNaN(input) === false) {
             return true;
           } else {
@@ -69,10 +69,16 @@ function addItems() {
           }
         }
       }
-    ]).then(function(answer) {
-      var querySQL = `SELECT * FROM products WHERE item-id = ${answer.ItemID}`
-    })
-  connection.query(querySQL, function(err, res) {
-    console.log(res);
-  })
+    ]).then(function (answer) {
+      var querySQL = `SELECT * FROM products WHERE item_id = ${answer.ItemID}`
+
+      connection.query(querySQL, function (err, res) {
+
+          if (answer.Quantity > res[0].stock_quantity) {
+            console.log('Sorry, not enough stock to fill this order. Please check back later.')
+          } else {
+            
+          }
+      });
+    });
 }

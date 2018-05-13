@@ -1,0 +1,9 @@
+# macOS generated files
+.DS_Store
+
+# Other
+.vscode
+.txt
+.env
+.eslint
+node_modules/
