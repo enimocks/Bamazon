@@ -15,6 +15,6 @@ Finally, the user is presented with their total cost of items purchased. They ca
 ## Image Preview
 This is the table that the user is initally presented with:
 
-![Image of Product Table]
-(/images/preview-1.png)
+![Image of Product Table](/images/preview-1.png)
 
+![Image of User Input and Output](/images/preview-2.png)
