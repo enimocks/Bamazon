@@ -28,7 +28,7 @@ function displayProducts() {
 
     var table = new Table({
       head: ['item_id', 'product_name', 'department_name', 'price', 'stock_quantity'],
-      colWidths: [10, 40, 20, 10, 15]
+      colWidths: [10, 40, 20, 10, 20]
     });
 
     for (var i = 0; i < res.length; i++) {
@@ -50,7 +50,7 @@ function addItems() {
         type: 'input',
         message: 'What is the Item ID of the product you would like to purchase?',
         validate: function (input) {
-          if (isNaN(input) === false) {
+          if (isNaN(input) === false && input !== '' && input <= 13)  {
             return true;
           } else {
             return false;
@@ -62,7 +62,7 @@ function addItems() {
         type: 'input',
         message: 'How many would you like to purchase?',
         validate: function (input) {
-          if (isNaN(input) === false) {
+          if (isNaN(input) === false && input !== '') {
             return true;
           } else {
             return false;
@@ -77,8 +77,31 @@ function addItems() {
           if (answer.Quantity > res[0].stock_quantity) {
             console.log('Sorry, not enough stock to fill this order. Please check back later.')
           } else {
+            console.log('Great! Your order will be filled.')
+
+            var total = answer.Quantity * res[0].price;
+            var updatedStock = res[0].stock_quantity - answer.Quantity;
             
+            //////////// FOR TESTING
+            console.log(total);
+            console.log(updatedStock);
+
+            console.log(`Your total price is $${total.toFixed(2)}`);
+
+            updateMySQL(updatedStock, answer.ItemID);
           }
       });
     });
+}
+
+function updateMySQL(updatedStock, ItemID) {
+  // use ES6 string templating for SQL staments
+  var updateQuery = ` 
+  UPDATE products
+  SET stock_quantity = ${updatedStock}
+  WHERE item_id = ${ItemID};`;
+
+  connection.query(updateQuery, function (err, res) {
+    connection.end();
+  });
 }
