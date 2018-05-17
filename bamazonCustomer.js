@@ -9,10 +9,10 @@ var connection = mysql.createConnection({
   port: 3306,
 
   // Your username
-  user: "newuser",
+  user: "root",
 
   // Your password
-  password: "ABCxyz1!",
+  password: "password",
   database: "Bamazon_DB"
 });
 
@@ -36,8 +36,8 @@ function displayProducts() {
       table.push(
         [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
       );
-      console.log(table.toString());
     }
+    console.log(table.toString());
     addItems();
   });
 }
