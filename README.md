@@ -25,6 +25,6 @@ This is the output given after the user has entered the item ID and quantity.
 
 ![Image of User Input and Output](/images/preview-2.png)
 
-Finally, you can see that the inventory for "The Great Gatsby" has been cleared out the next time the app is loaded.
+Finally, you can see that the inventory for "The Great Gatsby" has been cleared out (the next time the app is loaded).
 
 ![Image of Inventory Change](/images/preview-3.png)
