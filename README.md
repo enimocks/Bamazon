@@ -12,9 +12,19 @@ Upon running the program, by entering: `node bamazonCustomer.js`, you get a tabl
 
 Finally, the user is presented with their total cost of items purchased. They can continue to shop by reentering `node bamazonCustomer.js`.
 
+## Other Notes
+* Input validation with inquirer prevents the user from entering empty strings, non-numbers, and IDs outside the range of available IDs.
+* If a user tries to purchase more of an item than the store has in stock, they are alerted that there is not enough inventory and to check back later.
+
 ## Image Preview
 This is the table that the user is initally presented with:
 
 ![Image of Product Table](/images/preview-1.png)
 
+This is the output given after the user has entered the item ID and quantity.
+
 ![Image of User Input and Output](/images/preview-2.png)
+
+Finally, you can see that the inventory for "The Great Gatsby" has been cleared out the next time the app is loaded.
+
+![Image of Inventory Change](/images/preview-3.png)
