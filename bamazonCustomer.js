@@ -70,9 +70,9 @@ function addItems() {
         }
       }
     ]).then(function (answer) {
-      var querySQL = `SELECT * FROM products WHERE item_id = ${answer.ItemID}`
+      var querySQL = 'SELECT * FROM products WHERE ?'
 
-      connection.query(querySQL, function (err, res) {
+      connection.query(querySQL, { item_id: answer.ItemID }, function (err, res) {
 
           if (answer.Quantity > res[0].stock_quantity) {
             console.log('Sorry, not enough stock to fill this order. Please check back later.')
