@@ -17,14 +17,15 @@ Finally, the user is presented with their total cost of items purchased. They ca
 * If a user tries to purchase more of an item than the store has in stock, they are alerted that there is not enough inventory and to check back later.
 
 ## Image Preview
-This is the table that the user is initally presented with:
+
+### This is the table that the user is initally presented with:
 
 ![Image of Product Table](/images/preview-1.png)
 
-This is the output given after the user has entered the item ID and quantity.
+### This is the output given after the user has entered the item ID and quantity.
 
 ![Image of User Input and Output](/images/preview-2.png)
 
-Finally, you can see that the inventory for "The Great Gatsby" has been cleared out the next time the app is loaded.
+### Finally, you can see that the inventory for "The Great Gatsby" has been cleared out (the next time the app is loaded).
 
 ![Image of Inventory Change](/images/preview-3.png)
